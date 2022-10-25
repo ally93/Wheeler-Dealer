@@ -2,10 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CustomerForm from './CustomerForm';
 import MainPage from './MainPage';
 import Nav from './Nav';
+import SalesList from './SalesList';
 import SalesPersonForm from './SalesPersonForm';
 import SalesRecordForm from './SalesRecordForm';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <Nav />
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="sales">
+            <Route path="" element={<SalesList sales={props.sales}/>}/>
             <Route path="person">
               <Route path="add" element={<SalesPersonForm/>}/>
             </Route>
