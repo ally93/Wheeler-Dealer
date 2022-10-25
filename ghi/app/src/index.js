@@ -10,21 +10,37 @@ root.render(
 );
 
 
-async function loadManufacturers() {
-  const response = await fetch('http://localhost:8100/api/manufacturers/');
-  console.log(":::response:::", response)
+// async function loadManufacturers() {
+//   const response = await fetch('http://localhost:8100/api/manufacturers/');
+
+//   if (response.ok) {
+//     const data = await response.json();
+//     root.render(
+//       <React.StrictMode>
+//         <App manufacturers={data.manufacturers} />
+//       </React.StrictMode>
+//     );
+//   } else {
+//     console.error(response);
+//   }
+// }
+// loadManufacturers();
+
+async function loadAutomobiles() {
+  const response = await fetch('http://localhost:8100/api/automobiles/');
+
   if (response.ok) {
     const data = await response.json();
+    console.log(":::::data::::::", data)
     root.render(
       <React.StrictMode>
-        <App manufacturers={data.manufacturers} />
+        {/* <App automobiles={data.automobiles} /> */}
+        <App automobiles={data.automobiles} />
       </React.StrictMode>
     );
-    console.log(":::::data::::::", data)
-    console.log(":::::data.man::::::", data.manufacturers)
-
   } else {
     console.error(response);
   }
 }
-loadManufacturers();
+
+loadAutomobiles()
