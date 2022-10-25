@@ -11,7 +11,7 @@ class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = ['vin']
 
-class SalesPersonListEncoder(ModelEncoder):
+class SalesPersonEncoder(ModelEncoder):
     model = SalesPerson
     properties = [
         'name',
@@ -19,7 +19,7 @@ class SalesPersonListEncoder(ModelEncoder):
         'id'
     ]
 
-class CustomerListEncoder(ModelEncoder):
+class CustomerEncoder(ModelEncoder):
     model = Customer
     properties = [
         'name',
@@ -28,36 +28,38 @@ class CustomerListEncoder(ModelEncoder):
         'id'
     ]
 
-class SalesRecordListEncoder(ModelEncoder):
-    model = SalesRecord
-    properties = [
-        'automobile',
-        'sales_person',
-        'customer',
-        'price'
-    ]
-    def get_extra_data(self,o):
-        return {
-            'automobile': o.automobile.vin,
-            'sales_person': {
-                'name': o.sales_person.name,
-                'employee_number': o.sales_person.employee_number,
-            },
-            'customer': o.customer.name
-        }
+# class SalesRecordEncoder(ModelEncoder):
+#     model = SalesRecord
+#     properties = [
+#         'automobile',
+#         'sales_person',
+#         'customer',
+#         'price',
+#         'id'
+#     ]
+#     def get_extra_data(self,o):
+#         return {
+#             'automobile': o.automobile.vin,
+#             'sales_person': {
+#                 'name': o.sales_person.name,
+#                 'employee_number': o.sales_person.employee_number,
+#             },
+#             'customer': o.customer.name
+#         }
 
-class SalesRecordDetailEncoder(ModelEncoder):
+class SalesRecordEncoder(ModelEncoder):
     model=SalesRecord
     properties = [
         'automobile',
         'sales_person',
         'customer',
-        'price'
+        'price',
+        'id'
     ]
     encoders = {
         'automobile': AutomobileVOEncoder(),
-        'sales_person': SalesPersonListEncoder(),
-        'customer': CustomerListEncoder(),
+        'sales_person': SalesPersonEncoder(),
+        'customer': CustomerEncoder(),
     }
 
 
@@ -70,7 +72,7 @@ def sales_person_list(request):
         sales_person = SalesPerson.objects.all()
         return JsonResponse(
             {"sales_person": sales_person},
-            encoder=SalesPersonListEncoder,
+            encoder=SalesPersonEncoder,
             safe=False
         )
     else:
@@ -79,7 +81,7 @@ def sales_person_list(request):
             sales_person= SalesPerson.objects.create(**content)
             return JsonResponse(
                 sales_person,
-                encoder=SalesPersonListEncoder,
+                encoder=SalesPersonEncoder,
                 safe= False
             )
 
@@ -96,7 +98,7 @@ def show_sales_person(request, pk):
         sales_person = SalesPerson.objects.get(id=pk)
         return JsonResponse(
             sales_person,
-            encoder=SalesPersonListEncoder,
+            encoder=SalesPersonEncoder,
             safe=False,
         )
     elif request.method == "DELETE":
@@ -109,7 +111,7 @@ def show_sales_person(request, pk):
             sales_person = SalesPerson.objects.get(id=pk)
             return JsonResponse(
                 sales_person,
-                encoder=SalesPersonListEncoder,
+                encoder=SalesPersonEncoder,
                 safe=False
             )
         except SalesPerson.DoesNotExist:
@@ -124,7 +126,7 @@ def customer_list(request):
         customers = Customer.objects.all()
         return JsonResponse(
             {"customers": customers},
-            encoder=CustomerListEncoder,
+            encoder=CustomerEncoder,
             safe=False
         )
     else:
@@ -133,7 +135,7 @@ def customer_list(request):
             customer = Customer.objects.create(**content)
             return JsonResponse(
                 customer,
-                encoder=CustomerListEncoder,
+                encoder=CustomerEncoder,
                 safe= False
             )
 
@@ -150,7 +152,7 @@ def list_sales(request):
         sales_record = SalesRecord.objects.all()
         return JsonResponse(
             {"sales_record": sales_record}, 
-            encoder=SalesRecordListEncoder,
+            encoder=SalesRecordEncoder,
             safe=False 
         )
     else:
@@ -183,6 +185,6 @@ def list_sales(request):
         sale = SalesRecord.objects.create(**content)
         return JsonResponse(
             sale,
-            encoder=SalesRecordDetailEncoder,
+            encoder=SalesRecordEncoder,
             safe=False,
         )
