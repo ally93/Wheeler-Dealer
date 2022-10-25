@@ -3,6 +3,7 @@ import CustomerForm from './CustomerForm';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesPersonForm from './SalesPersonForm';
+import SalesRecordForm from './SalesRecordForm';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Route path="sales">
             <Route path="person">
               <Route path="add" element={<SalesPersonForm/>}/>
+            </Route>
+            <Route path="record">
+              <Route path="add" element={<SalesRecordForm/>}/>
             </Route>
           </Route>
           <Route path="customers">
