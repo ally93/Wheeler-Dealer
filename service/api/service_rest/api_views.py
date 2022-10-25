@@ -38,7 +38,8 @@ class ServiceAppointmentEncoder(ModelEncoder):
     properties = [
         "vin",
         "owner",
-        "date_time",
+        "date",
+        "time",
         "technician",
         "reason",
         "is_vip",
@@ -97,9 +98,7 @@ def api_technician(request, pk):
             technician = Technician.objects.get(id=pk)
             technician.delete()
             return JsonResponse(
-                technician,
-                encoder=TechnicianEncoder,
-                safe=False,
+                {"message": "Technician has been deleted"},
             )
         except Technician.DoesNotExist:
             return JsonResponse({"message": "Technician does not exist"})
@@ -129,11 +128,25 @@ def api_service_appointments(request):
             encoder=ServiceAppointmentEncoder,
         )
     else:
+        content = json.loads(request.body)
         try:
-            content = json.loads(request.body)
-            technician = Technician.objects.get(id=content["technician"])
+            technician_id = content["technician"]
+            technician = Technician.objects.get(id=technician_id)
             content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Technician not found"},
+                status=404,
+            )
 
+        # try:
+        #     vin_id = content["vin"]
+        #     vip_vin = AutomobileVO.objects.get(vin=vin_id)
+        #     content["is_vip"] = True
+        # except AutomobileVO.DoesNotExist:
+        #     content["is_vip"] = False
+
+        try:
             appointment = ServiceAppointment.objects.create(**content)
             return JsonResponse(
                 appointment,
@@ -167,9 +180,7 @@ def api_service_appointment(request, pk):
             appointment = ServiceAppointment.objects.get(id=pk)
             appointment.delete()
             return JsonResponse(
-                appointment,
-                encoder=TechnicianEncoder,
-                safe=False,
+                {"message": "Appointment has been deleted"},
             )
         except ServiceAppointment.DoesNotExist:
             return JsonResponse({"message": "Appointment does not exist"})
