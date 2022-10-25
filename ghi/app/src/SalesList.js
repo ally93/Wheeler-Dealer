@@ -27,7 +27,7 @@ class SalesList extends React.Component {
                         <td>{ sale.sales_person.name }  ({sale.sales_person.employee_number})</td>
                         <td>{ sale.customer.name }</td>
                         <td>{ sale.automobile.vin }</td>
-                        <td>{ sale.price }</td>
+                        <td>${ sale.price.toLocaleString() }</td>
                     </tr>
                     );
                 })}

@@ -7,6 +7,10 @@ import SalesPersonForm from './SalesPersonForm';
 import SalesRecordForm from './SalesRecordForm';
 
 function App(props) {
+  if(props.sales === undefined) {
+    return null;
+  }
+
   return (
     <BrowserRouter>
       <Nav />
