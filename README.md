@@ -98,6 +98,20 @@ Creating and updating a sale requires automobile vin, sales_person id and custom
 You can navigate to create view customer, sales, and sales person through the app in localhost:3000
 
 
+The frontend is set up in React as follow
+
+| Method | Path                  | Description                                   |
+| ------ | --------------------- | --------------------------------------------- |
+| GET    | /api/sales/           | Get a list of sales                           |
+| POST   | /api/sales/record/add | Create a new sales                            |
+| GET    | /api/sales/person/history/ | Filter out the sales history of a sales staff |
+| POST   | /api/sales/person/add  | Register a new sales staff                    |
+| POST   | /api/customers/new/   | Register a new customer                       |
+| GET    | /api/vehicles/models   | Get a list of vehicle models                     |
+| POST   | /api/vehicles/models/add | Create a new vehicle models                     |
+
+
+
 
 # How to run the app
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class VehicleModelForm extends React.Component {
+class VehicleModelList extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -23,7 +23,6 @@ class VehicleModelForm extends React.Component {
         return (
             <div className="container">
                 <h2 className="display-5 fw-bold">Vehicle Models</h2>
-                {/* <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/models/new">Add a Vehicle Model</NavLink></button> */}
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -48,4 +47,4 @@ class VehicleModelForm extends React.Component {
         );
     }
 }
-export default VehicleModelForm;
+export default VehicleModelList;
