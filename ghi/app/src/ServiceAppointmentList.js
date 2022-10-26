@@ -38,8 +38,8 @@ class ServiceAppointmentList extends React.Component {
     }
 
     render() {
-        const vip = this.state.appointments.filter(appointment => { return appointment.is_vip })
-        console.log(":::vip:::", vip)
+        // const vip = this.state.appointments.filter(appointment => { return appointment.is_vip })
+        // console.log(":::vip:::", vip)
 
         return (
             <div className="container">
@@ -59,14 +59,14 @@ class ServiceAppointmentList extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.appointments.map(appointment => {
-                            let classNameFinished = ''
+                            let finished = ''
                             if (appointment.is_finished === true) {
-                                classNameFinished = 'd-none'
+                                finished = 'd-none'
                             };
                             // const is_vip = appointment.is_vip
 
                             return (
-                                <tr className={classNameFinished} key={appointment.id}>
+                                <tr className={finished} key={appointment.id}>
                                     <td>{appointment.vin}</td>
                                     <td>{appointment.owner}</td>
                                     <td>{appointment.date}</td>
