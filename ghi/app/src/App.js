@@ -8,6 +8,7 @@ import AutomobileForm from './AutomobileForm';
 import TechnicianForm from './TechnicianForm';
 import ServiceAppointmentForm from './ServiceAppointmentForm';
 import ServiceAppointmentList from './ServiceAppointmentList';
+import ServiceAppointmentHistory from './ServiceAppointmentHistory';
 
 function App(props) {
   // if (props.manufacturers === undefined && props.automobiles === undefined) {
@@ -19,6 +20,7 @@ function App(props) {
   if (props.appointments === undefined) {
     return null;
   }
+
   return (
     <BrowserRouter>
       <Nav />
@@ -36,9 +38,10 @@ function App(props) {
           <Route path="technicians">
             <Route path="new" element={<TechnicianForm />} />
           </Route>
-          <Route path="service-appointments">
+          <Route path="appointments">
             <Route path="new" element={<ServiceAppointmentForm />} />
             <Route path="" element={<ServiceAppointmentList appointments={props.appointments} />} />
+            <Route path="history" element={<ServiceAppointmentHistory appointments={props.appointments} />} />
           </Route>
         </Routes>
       </div>

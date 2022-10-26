@@ -56,7 +56,7 @@ class ServiceAppointmentForm extends React.Component {
         delete data.technicians
         console.log(":::data::::", data)
 
-        const serviceAppointmentUrl = 'http://localhost:8080/api/service-appointments/';
+        const serviceAppointmentUrl = 'http://localhost:8080/api/appointments/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),

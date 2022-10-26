@@ -5,19 +5,23 @@ from .api_views import (
     api_technician,
     api_service_appointments,
     api_service_appointment,
+    # appointment_history,
 )
 
 urlpatterns = [
     path("technicians/", api_technicians, name="api_technicians"),
     path("technicians/<int:pk>/", api_technician, name="api_technician"),
     path(
-        "service-appointments/",
+        "appointments/",
         api_service_appointments,
-        name="api_service_appointments",
+        name="api_appointments",
     ),
     path(
-        "service-appointments/<int:pk>/",
+        "appointments/<int:pk>/",
         api_service_appointment,
-        name="api_service_appointment",
+        name="api_appointment",
     ),
+    # path(
+    #     "appointments/<str:vin>/", appointment_history, name="api_appointment_history"
+    # ),
 ]

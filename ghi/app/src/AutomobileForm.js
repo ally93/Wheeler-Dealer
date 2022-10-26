@@ -39,6 +39,8 @@ class AutomobileForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
+        data.model_id = data.model
+        delete data.model
         delete data.models
         console.log(":::::data:::::", data);
 

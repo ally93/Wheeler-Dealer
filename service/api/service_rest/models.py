@@ -37,3 +37,7 @@ class ServiceAppointment(models.Model):
 
     def get_api_url(self):
         return reverse("api_service_appointments", kwargs={"pk": self.pk})
+
+    # def get_queryset(self):
+    #     queryset = ServiceAppointment.objects.all()
+    #     vin = self

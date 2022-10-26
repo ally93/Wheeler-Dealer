@@ -46,7 +46,7 @@ root.render(
 // loadAutomobiles()
 
 async function loadAppointments() {
-  const response = await fetch('http://localhost:8080/api/service-appointments/');
+  const response = await fetch('http://localhost:8080/api/appointments/');
 
   if (response.ok) {
     const data = await response.json();

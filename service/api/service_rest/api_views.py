@@ -139,12 +139,12 @@ def api_service_appointments(request):
                 status=404,
             )
 
-        # try:
-        #     vin_id = content["vin"]
-        #     vip_vin = AutomobileVO.objects.get(vin=vin_id)
-        #     content["is_vip"] = True
-        # except AutomobileVO.DoesNotExist:
-        #     content["is_vip"] = False
+        try:
+            vin_id = content["vin"]
+            vip_vin = AutomobileVO.objects.get(vin=vin_id)
+            content["is_vip"] = True
+        except AutomobileVO.DoesNotExist:
+            content["is_vip"] = False
 
         try:
             appointment = ServiceAppointment.objects.create(**content)
@@ -198,3 +198,12 @@ def api_service_appointment(request, pk):
             response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
             return response
+
+
+# @require_http_methods(["GET"])
+# def appointment_history(request, vin):
+#     appointments = ServiceAppointment.objects.filter(pk=vin)
+#     return JsonResponse(
+#         {"appointments": appointments},
+#         encoder=ServiceAppointmentEncoder,
+#     )

@@ -5,11 +5,12 @@ class ServiceAppointmentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = { appointments: props.appointments };
+        console.log("::::props:::", props.appointments.filter(appointment => appointment.is_vip === true))
         this.handleDelete = this.handleDelete.bind(this)
     }
 
     async handleDelete(appointmentId) {
-        const appointmentUrl = `http://localhost:8080/api/service-appointments/${appointmentId}`
+        const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}`
         const fetchConfig = {
             method: "DELETE",
         }
@@ -21,7 +22,7 @@ class ServiceAppointmentList extends React.Component {
     }
 
     async handleCompletion(appointmentId) {
-        const appointmentUrl = `http://localhost:8080/api/service-appointments/${appointmentId}/`
+        const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}/`
         const fetchConfig = {
             method: "PUT",
             headers: {
@@ -37,10 +38,13 @@ class ServiceAppointmentList extends React.Component {
     }
 
     render() {
+        const vip = this.state.appointments.filter(appointment => { return appointment.is_vip })
+        console.log(":::vip:::", vip)
+
         return (
             <div className="container">
                 <h3 className="display-6 fw-bold">Service Appointments</h3>
-                <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/service-appointments/new">Schedule an Appointment</NavLink></button>
+                <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/appointments/new">Schedule an Appointment</NavLink></button>
                 <table className="table table-striped" >
                     <thead>
                         <tr>
@@ -50,7 +54,7 @@ class ServiceAppointmentList extends React.Component {
                             <th>Time</th>
                             <th>Technician</th>
                             <th>Reason</th>
-                            <th>VIP</th>
+                            <th>VIP?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,14 +63,17 @@ class ServiceAppointmentList extends React.Component {
                             if (appointment.is_finished === true) {
                                 classNameFinished = 'd-none'
                             };
+                            // const is_vip = appointment.is_vip
 
                             return (
                                 <tr className={classNameFinished} key={appointment.id}>
                                     <td>{appointment.vin}</td>
+                                    <td>{appointment.owner}</td>
                                     <td>{appointment.date}</td>
                                     <td>{appointment.time}</td>
                                     <td>{appointment.technician.name}</td>
                                     <td>{appointment.reason}</td>
+                                    <td>{appointment.is_vip ? "Yes" : "No"}</td>
                                     <td>
                                         <button className="btn btn-danger" onClick={() => this.handleDelete(appointment.id)}>Cancel</button>
                                     </td>
