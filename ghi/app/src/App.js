@@ -6,6 +6,7 @@ import SalesList from './SalesList';
 import SalesPersonForm from './SalesPersonForm';
 import SalesPersonHistory from './SalesPersonHistory';
 import SalesRecordForm from './SalesRecordForm';
+import VehicleModelList from './VehicleModelList';
 
 function App(props) {
   if(props.sales === undefined) {
@@ -18,6 +19,9 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="vehicles">
+            <Route path="models" element={<VehicleModelList/>}/>
+          </Route>
           <Route path="sales">
             <Route path="" element={<SalesList sales={props.sales}/>}/>
             <Route path="person">
