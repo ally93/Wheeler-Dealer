@@ -30,7 +30,7 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers">
             <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />} />
-            <Route path="new" element={<ManufacturerForm />} />
+            <Route path="manufacturers/new" element={<ManufacturerForm />} />
           </Route>
           <Route path="automobiles">
             <Route path="" element={<AutoMobileList automobiles={props.automobiles} />} />
