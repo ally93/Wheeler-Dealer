@@ -26,16 +26,35 @@ root.render(
 // }
 // loadManufacturers();
 
-async function loadAutomobiles() {
-  const response = await fetch('http://localhost:8100/api/automobiles/');
+// async function loadAutomobiles() {
+//   const response = await fetch('http://localhost:8100/api/automobiles/');
+
+//   if (response.ok) {
+//     const data = await response.json();
+//     // console.log(":::::data::::::", data)
+//     root.render(
+//       <React.StrictMode>
+//         {/* <App automobiles={data.automobiles} /> */}
+//         <App automobiles={data.automobiles} />
+//       </React.StrictMode>
+//     );
+//   } else {
+//     console.error(response);
+//   }
+// }
+
+// loadAutomobiles()
+
+async function loadAppointments() {
+  const response = await fetch('http://localhost:8080/api/service-appointments/');
 
   if (response.ok) {
     const data = await response.json();
-    console.log(":::::data::::::", data)
+    // console.log(":::::data::::::", data)
     root.render(
       <React.StrictMode>
         {/* <App automobiles={data.automobiles} /> */}
-        <App automobiles={data.automobiles} />
+        <App appointments={data.appointments} />
       </React.StrictMode>
     );
   } else {
@@ -43,4 +62,4 @@ async function loadAutomobiles() {
   }
 }
 
-loadAutomobiles()
+loadAppointments()
