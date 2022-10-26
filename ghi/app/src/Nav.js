@@ -13,6 +13,9 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link"  to="/sales">Sales List</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link"  to="/sales/person/history">Sales History</NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav my-2 my-lg-0">
             <li className="nav-item">

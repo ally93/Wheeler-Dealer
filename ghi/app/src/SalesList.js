@@ -16,7 +16,7 @@ class SalesList extends React.Component {
                 <tr>
                     <th>Sales Person (Employee Number)</th>
                     <th>Purchaser Name</th>
-                    <th>Automobile Vin</th>
+                    <th>Automobile VIN</th>
                     <th>Price</th>
                 </tr>
                 </thead>

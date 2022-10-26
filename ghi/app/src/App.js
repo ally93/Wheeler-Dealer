@@ -4,6 +4,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesList from './SalesList';
 import SalesPersonForm from './SalesPersonForm';
+import SalesPersonHistory from './SalesPersonHistory';
 import SalesRecordForm from './SalesRecordForm';
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
             <Route path="" element={<SalesList sales={props.sales}/>}/>
             <Route path="person">
               <Route path="add" element={<SalesPersonForm/>}/>
+              <Route path="history" element={<SalesPersonHistory sales={props.sales}/>}/>
             </Route>
             <Route path="record">
               <Route path="add" element={<SalesRecordForm/>}/>
