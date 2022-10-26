@@ -31,36 +31,7 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/appointments/history">Appointment History</NavLink></li>
               </ul>
             </li>
-            {/* <ul className="dropdown-menu">
-              <li><NavLink className="dropdown-item" to="/manufacturers">Manufacturers</NavLink></li>
-            </ul> */}
-            {/* <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
-            </li> */}
-            {/* <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles">Automobiles</NavLink>
-            </li> */}
           </ul>
-          {/* <ul className="navbar-nav my-2 my-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/new">Add a Manufacturer</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/new">Create New Automobile</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians/new">Add a Technician</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/new">Create a Service Appointment</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments">Service Appointments</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/history">Appointment History</NavLink>
-            </li>
-          </ul> */}
         </div>
       </div>
     </nav>
