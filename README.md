@@ -6,7 +6,7 @@ Team:
 * Ally Chock - Sales microservice
 
 ## Design
-This project consists of 3 microservices(Sales, Service, Inventory) operating within their bounded contexts. There is an integration point between Service and Sales microservice with the Inventory microservice. The microservices integrates with the inventory system via polling. It periodically checks the inventory levels and compares them to the levels that are stored in the microservice. If there are any discrepancies, it updates the microservices accordingly.All these backend is used to build the frontend. When a user opens the site, they'll be able to use the navbar to check out different components.
+This project consists of 3 microservices(Sales, Service, Inventory) operating within their own bounded contexts. There is an integration point between Service and Sales microservice with the Inventory microservice through the automoile model. The microservices integrates with the inventory system via polling. It periodically checks the inventory levels and compares them to the levels that are stored in the microservice. If there are any discrepancies, it updates the microservices accordingly.All these backend is used to build the frontend. When a user opens the site, they'll be able to use the navbar to check out different components.
 
 ## Service microservice
 

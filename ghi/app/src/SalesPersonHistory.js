@@ -27,10 +27,10 @@ class SalesPersonHistory extends React.Component{
 
     handleSalesPersonChange(event){
         let salesPersonId = event.target.value
-        // console.log('sales:', this.state.sales)
-        // console.log('salesPersonID:', salesPersonId)
+        console.log('sales:', this.state.sales)
+        console.log('salesPersonID:', salesPersonId)
         let filtered = this.state.sales.filter(sale => sale.sales_person.id == salesPersonId);
-        // console.log('filtered:::', filtered)
+        console.log('filtered:::', filtered)
         this.setState({salesPerson : event.target.value, filteredSales: filtered})
     }
 
