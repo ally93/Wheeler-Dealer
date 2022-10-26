@@ -14,7 +14,7 @@ async function loadSales(){
   if(response.ok){
     // code gets the data from the responses json method
     const data = await response.json();
-    console.log('data', data);
+    // console.log('data', data);
 
     root.render(
       <React.StrictMode>
