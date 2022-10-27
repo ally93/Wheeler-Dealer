@@ -22,7 +22,8 @@ class VehicleModelList extends React.Component {
     render() {
         return (
             <div className="container">
-                <h3 className="display-6 fw-bold">Vehicle Models</h3><button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/vehicles-add">Add a Vehicle Model</NavLink></button>
+                <h3 className="display-6 fw-bold">Vehicle Models</h3>
+                <button type="button" className="btn btn-outline-light"><NavLink className="nav-link" aria-current="page" to="/vehicles-new">Add a Vehicle Model</NavLink></button>
                 <table className="table table-striped">
                     <thead>
                         <tr>

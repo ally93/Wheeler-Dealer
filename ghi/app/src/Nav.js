@@ -17,7 +17,7 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/vehicles">Vehicle Model List</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/automobiles">Automobile List</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/manufacturers-new">Add a Manufacturer</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/vehicles-add">Add New Vehicle Model</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/vehicles-new">Add New Vehicle Model</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/automobiles-new">Create New Automobile</NavLink></li>
               </ul>
             </li>
@@ -26,9 +26,9 @@ function Nav() {
               <ul className="dropdown-menu">
                 <li><NavLink className="dropdown-item" to="/salesrecords">Sales Records</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesperson-history">Sales History</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/salesperson-add">Create New Sales Person</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/customers-add">Create New Customer</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/salesrecord-new">Create New Sales Record</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salesperson-new">Create New Sales Person</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/customers-new">Create New Customer</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salesrecords-new">Create New Sales Record</NavLink></li>
               </ul>
             </li>
             <li className="nav-item dropdown">

@@ -14,7 +14,7 @@ class SalesList extends React.Component {
         return (
             <div className="container">
                 <h3 className="display-6 fw-bold">Sales Records</h3>
-                <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/salesrecord-new">Create a Sales Record</NavLink></button>
+                <button type="button" className="btn btn-outline-light"><NavLink className="nav-link" aria-current="page" to="/salesrecords-new">Create a Sales Record</NavLink></button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
