@@ -1,19 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CustomerForm from './CustomerForm';
 import MainPage from './MainPage';
 import Nav from './Nav';
 
-import SalesList from './SalesList';
-import SalesPersonForm from './SalesPersonForm';
-import SalesPersonHistory from './SalesPersonHistory';
-import SalesRecordForm from './SalesRecordForm';
-
-import VehicleModelForm from './VehicleModelForm';
-import VehicleModelList from './VehicleModelList';
 import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
+import VehicleModelList from './VehicleModelList';
+import VehicleModelForm from './VehicleModelForm';
 import AutoMobileList from './AutomobileList';
 import AutomobileForm from './AutomobileForm';
+
+import SalesList from './SalesList';
+import SalesRecordForm from './SalesRecordForm';
+import SalesPersonHistory from './SalesPersonHistory';
+import SalesPersonForm from './SalesPersonForm';
+import CustomerForm from './CustomerForm';
 
 import TechnicianForm from './TechnicianForm';
 import ServiceAppointmentForm from './ServiceAppointmentForm';
@@ -22,7 +22,7 @@ import ServiceAppointmentHistory from './ServiceAppointmentHistory';
 
 
 function App(props) {
-  if(props.sales === undefined || props.appointments === undefined) {
+  if (props.sales === undefined || props.appointments === undefined) {
     return null;
   }
 
@@ -32,41 +32,21 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="vehicles">
-            <Route path="models">
-              <Route path="" element={<VehicleModelList/>}/>
-              <Route path="add" element={<VehicleModelForm/>}/>
-            </Route>
-          </Route>
-          <Route path="sales">
-            <Route path="" element={<SalesList sales={props.sales}/>}/>
-            <Route path="person">
-              <Route path="add" element={<SalesPersonForm/>}/>
-              <Route path="history" element={<SalesPersonHistory sales={props.sales}/>}/>
-            </Route>
-            <Route path="record">
-              <Route path="add" element={<SalesRecordForm/>}/>
-            </Route>
-          </Route>
-          <Route path="customers">
-            <Route path="add" element={<CustomerForm/>}/>
-          </Route>
-          <Route path="manufacturers">
-            <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />} />
-            <Route path="new" element={<ManufacturerForm />} />
-          </Route>
-          <Route path="automobiles">
-            <Route path="" element={<AutoMobileList automobiles={props.automobiles} />} />
-            <Route path="new" element={<AutomobileForm />} />
-          </Route>
-          <Route path="technicians">
-            <Route path="new" element={<TechnicianForm />} />
-          </Route>
-          <Route path="appointments">
-            <Route path="new" element={<ServiceAppointmentForm />} />
-            <Route path="" element={<ServiceAppointmentList appointments={props.appointments} />} />
-            <Route path="history" element={<ServiceAppointmentHistory appointments={props.appointments} />} />
-          </Route>
+          <Route path="manufacturers" element={<ManufacturerList />} />
+          <Route path="manufacturers-new" element={<ManufacturerForm />} />
+          <Route path="vehicles" element={<VehicleModelList />} />
+          <Route path="vehicles-new" element={<VehicleModelForm />} />
+          <Route path="automobiles" element={<AutoMobileList />} />
+          <Route path="automobiles-new" element={<AutomobileForm />} />
+          <Route path="salesrecords" element={<SalesList sales={props.sales} />} />
+          <Route path="salesrecords-new" element={<SalesRecordForm />} />
+          <Route path="salesperson-history" element={<SalesPersonHistory sales={props.sales} />} />
+          <Route path="salesperson-new" element={<SalesPersonForm />} />
+          <Route path="customers-new" element={<CustomerForm />} />
+          <Route path="technicians-new" element={<TechnicianForm />} />
+          <Route path="appointments" element={<ServiceAppointmentList appointments={props.appointments} />} />
+          <Route path="appointments-new" element={<ServiceAppointmentForm />} />
+          <Route path="appointments-history" element={<ServiceAppointmentHistory appointments={props.appointments} />} />
         </Routes>
       </div>
     </BrowserRouter>
