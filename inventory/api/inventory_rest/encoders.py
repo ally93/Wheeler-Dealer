@@ -31,6 +31,7 @@ class AutomobileEncoder(ModelEncoder):
         "color",
         "year",
         "vin",
+        "sold",
         "model",
     ]
     encoders = {

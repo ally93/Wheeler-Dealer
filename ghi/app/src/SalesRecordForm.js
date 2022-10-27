@@ -7,7 +7,7 @@ class SalesRecordForm extends React.Component {
         this.state = {
             automobiles: [],
             salesPersons: [],
-            customers: [],
+            customers: [], 
             automobile: '',
             salesPerson: '',
             customer: '',
@@ -42,17 +42,46 @@ class SalesRecordForm extends React.Component {
 
         const response = await fetch(salesUrl, fetchConfig);
         if (response.ok) {
-            const cleared = {
-                automobile: '',
-                salesPerson: '',
-                customer: '',
-                price: '',
-            };
-            console.log('response', response);
-            this.setState(cleared);
+            // const cleared = {
+            //     automobile: '',
+            //     salesPerson: '',
+            //     customer: '',
+            //     price: '',
+            // };
+            // console.log('response', response);
+            this.markCarAsSold(data.automobile);
+            // this.setState(cleared);
             // window.location.reload(true);
 
         }
+    }
+
+    async markCarAsSold(automobile_vin){
+      const url = `http://localhost:8100/api/automobiles/${automobile_vin}/`;
+      const data = {
+        automobile : automobile_vin,
+        sold : true
+      }
+      console.log('dataaaa::::', data);
+      const fetchConfig = {
+        method: "put",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+      }
+
+      const response = await fetch(url, fetchConfig);
+
+      if (response.ok) {
+        console.log('response', response);
+
+        // reset the page to refresh list of automobiles & sales records
+        window.location.reload(true);
+
+      }
+
+
     }
 
     handleAutomobileChange(event) {
@@ -90,9 +119,13 @@ class SalesRecordForm extends React.Component {
             const data_salesPerson = await salesResponse.json();
             const data_automobile = await autoResponse.json();
 
+            const unsoldAutos = data_automobile.autos.filter(car => !car.sold);
+            console.log('data_automobiles', data_automobile.autos)
+            
+
             this.setState({salesPersons: data_salesPerson.sales_person})
             this.setState({customers: data_customer.customers})
-            this.setState({automobiles: data_automobile.autos})
+            this.setState({automobiles: unsoldAutos})
             console.log(this.state)
         }
     }     

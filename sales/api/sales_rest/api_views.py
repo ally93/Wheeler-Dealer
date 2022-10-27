@@ -194,6 +194,7 @@ def list_sales(request):
             status = 404
             )
         sale = SalesRecord.objects.create(**content)
+        
         return JsonResponse(
             sale,
             encoder=SalesRecordEncoder,
