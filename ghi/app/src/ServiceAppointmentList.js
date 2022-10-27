@@ -41,7 +41,7 @@ class ServiceAppointmentList extends React.Component {
         return (
             <div className="container">
                 <h3 className="display-6 fw-bold">Service Appointments</h3>
-                <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/appointments/new">Schedule an Appointment</NavLink></button>
+                <button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/appointments-new">Schedule an Appointment</NavLink></button>
                 <table className="table table-striped" >
                     <thead>
                         <tr>
