@@ -38,35 +38,15 @@ function App(props) {
           <Route path="manufacturers-new" element={<ManufacturerForm />} />
           <Route path="vehicles-add" element={<VehicleModelForm />} />
           <Route path="automobiles-new" element={<AutomobileForm />} />
-          {/* <Route path="" element={<VehicleModelList />} /> */}
-          {/* <Route path="add" element={<VehicleModelForm />} /> */}
-          {/* </Route> */}
-          {/* </Route> */}
           <Route path="salesrecords" element={<SalesList sales={props.sales} />} />
-          {/* <Route path="" element={<SalesList sales={props.sales} />} /> */}
           <Route path="salesperson-history" element={<SalesPersonHistory sales={props.sales} />} />
           <Route path="salesperson-add" element={<SalesPersonForm />} />
-          {/* <Route path="add" element={<SalesPersonForm />} /> */}
-          {/* </Route> */}
-          {/* <Route path="record"> */}
-          <Route path="salesrecord-add" element={<SalesRecordForm />} />
-          {/* </Route> */}
-          {/* </Route> */}
+          <Route path="salesrecord-new" element={<SalesRecordForm />} />
           <Route path="customers-add" element={<CustomerForm />} />
-          {/* <Route path="add" element={<CustomerForm />} /> */}
-          {/* </Route> */}
-          {/* <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />} /> */}
-          {/* </Route> */}
-          {/* <Route path="" element={<AutoMobileList automobiles={props.automobiles} />} /> */}
-          {/* </Route> */}
           <Route path="technicians-new" element={<TechnicianForm />} />
-          {/* <Route path="new" element={<TechnicianForm />} /> */}
-          {/* </Route> */}
           <Route path="appointments" element={<ServiceAppointmentList appointments={props.appointments} />} />
           <Route path="appointments-new" element={<ServiceAppointmentForm />} />
-          {/* <Route path="" element={<ServiceAppointmentList appointments={props.appointments} />} /> */}
           <Route path="appointments-history" element={<ServiceAppointmentHistory appointments={props.appointments} />} />
-          {/* </Route> */}
         </Routes>
       </div>
     </BrowserRouter>

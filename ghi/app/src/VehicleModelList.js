@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom'
 
 class VehicleModelList extends React.Component {
     constructor(props) {
@@ -22,13 +22,13 @@ class VehicleModelList extends React.Component {
     render() {
         return (
             <div className="container">
-                <h2 className="display-5 fw-bold">Vehicle Models</h2>
+                <h3 className="display-6 fw-bold">Vehicle Models</h3><button type="button" className="btn btn-outline-primary"><NavLink className="nav-link" aria-current="page" to="/vehicles-add">Add a Vehicle Model</NavLink></button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Manufacturer</th>
-                            <th>Name</th>
-                            <th>Picture</th>
+                            <th style={{ width: 300 }}>Manufacturer</th>
+                            <th style={{ width: 300 }}>Name</th>
+                            <th width="40%">Picture</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@ class VehicleModelList extends React.Component {
                                 <tr key={model.id}>
                                     <td>{model.manufacturer.name}</td>
                                     <td>{model.name}</td>
-                                    <td><img src={model.picture_url} alt="null" width="20%" height="20%" /></td>
+                                    <td><img src={model.picture_url} alt="null" width="60%" height="20%" /></td>
                                 </tr>
                             )
                         })}
