@@ -20,17 +20,13 @@ class SalesPersonHistory extends React.Component{
         if (response.ok) {
           const data = await response.json();
           this.setState({salesPersons: data.sales_person});
-        //   console.log(data)
           
         }
     }
 
     handleSalesPersonChange(event){
         let salesPersonId = event.target.value
-        console.log('sales:', this.state.sales)
-        console.log('salesPersonID:', salesPersonId)
         let filtered = this.state.sales.filter(sale => sale.sales_person.id == salesPersonId);
-        console.log('filtered:::', filtered)
         this.setState({salesPerson : event.target.value, filteredSales: filtered})
     }
 

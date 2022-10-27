@@ -38,8 +38,6 @@ class SalesPersonForm extends React.Component {
         const response = await fetch(salesPersonUrl, fetchConfig);
         if (response.ok) {
             const newSalesPerson = await response.json();
-            console.log('newSalesPerson: ', newSalesPerson);
-
             const cleared = {
                 name: '',
                 employeeNumber: ''

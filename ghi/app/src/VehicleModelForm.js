@@ -49,7 +49,6 @@ class VehicleModelForm extends React.Component {
         
         if (response.ok) {
             const newModel = await response.json();
-            console.log('newModel:::', newModel);
 
             const cleared = {
                 name: '',
@@ -67,7 +66,6 @@ class VehicleModelForm extends React.Component {
         if (response.ok) {
           const data = await response.json();
           this.setState({manufacturers: data.manufacturers});
-          console.log(data)
 
         }
       }
