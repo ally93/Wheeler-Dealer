@@ -84,14 +84,14 @@ Creating and updating a sale requires automobile vin, sales_person id and custom
 ```
 
 
-
-<!-- -Django is used to build the backend model, views and urls for sales microservice
+### Approach for sales microservice
+-Django is used to build the backend model, views and urls for sales microservice
 -settings- Linked the django app and project and cors
 -Models consist of AutomobileVO, SalesPerson, Customer, SalesRecord
 -Registered models in the admin.py
 -Views , utilized restful api (POST, GET, DELETE, PUT)
 -URLS linking paths from both the app and project
--Ensured the correct polling of data  -->
+-Ensured the correct polling of data 
 
 
 # Application UI
