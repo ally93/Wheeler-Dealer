@@ -9,19 +9,25 @@ root.render(
   </React.StrictMode>
 );
 
-async function loadSales(){
-  const response = await fetch('http://localhost:8090/api/sales');
-  if(response.ok){
+async function loadSalesAndAppointments(){
+  const salesResponse = await fetch('http://localhost:8090/api/sales');
+  const appointmentsResponse = await fetch('http://localhost:8080/api/appointments/');
+
+  if(salesResponse.ok && appointmentsResponse.ok){
     // code gets the data from the responses json method
-    const data = await response.json();
+    const salesData = await salesResponse.json();
+    const appointmentsData = await appointmentsResponse.json();
+
     root.render(
       <React.StrictMode>
-        <App sales={data.sales_record} />
+        <App sales={salesData.sales_record} appointments={appointmentsData.appointments}/>
       </React.StrictMode>
     );
-
   } else {
-    console.error(response);
+    console.error(salesResponse);
+    console.error(appointmentsResponse);
   }
 }
-loadSales();
+
+loadSalesAndAppointments();
+

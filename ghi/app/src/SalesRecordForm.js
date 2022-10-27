@@ -108,8 +108,8 @@ class SalesRecordForm extends React.Component {
             const data_salesPerson = await salesResponse.json();
             const data_automobile = await autoResponse.json();
 
-            const unsoldAutos = data_automobile.autos.filter(car => !car.sold);
-            
+            const unsoldAutos = data_automobile.automobiles.filter(car => !car.sold);
+          
 
             this.setState({salesPersons: data_salesPerson.sales_person})
             this.setState({customers: data_customer.customers})
