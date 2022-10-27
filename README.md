@@ -8,6 +8,8 @@
 # Design
 This project consists of 3 microservices (Inventory, Sales, Service) operating within their own bounded contexts. There is an integration point between the Service and Sales microservices with the Inventory microservice through the automobile model. The Sales and Service microservices have an automobile value object model. The microservices integrate with the inventory system via polling. The poller periodically checks the automobiles in inventory and compares them to the automobile value object in both microservices. If there are any discrepancies, it updates the microservices accordingly. The models, views, and data that comprise the backend are used to build and populate the frontend. When a user opens the site, they'll be able to use the navbar to check out different components.
 
+<img src="./documents/Project-beta-diagram.png" width="1100"/>
+
 <p>&nbsp;</p>
 
 ## Sales microservice
