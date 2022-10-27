@@ -42,7 +42,7 @@ class AutomobileForm extends React.Component {
         data.model_id = data.model
         delete data.model
         delete data.models
-        console.log(":::::data:::::", data);
+        // console.log(":::::data:::::", data);
 
         const automobilesUrl = "http://localhost:8100/api/automobiles/";
         const fetchConfig = {
@@ -53,10 +53,10 @@ class AutomobileForm extends React.Component {
             },
         };
         const response = await fetch(automobilesUrl, fetchConfig);
-        console.log(":::::response::::::", response)
+        // console.log(":::::response::::::", response)
         if (response.ok) {
             const newAutomobile = await response.json();
-            console.log("New Automobile", newAutomobile);
+            // console.log("New Automobile", newAutomobile);
 
             const cleared = {
                 year: '',
@@ -75,7 +75,7 @@ class AutomobileForm extends React.Component {
 
         if (response.ok) {
             const data = await response.json();
-            console.log("::::mount data::::", data)
+            // console.log("::::mount data::::", data)
             this.setState({ models: data.models });
         };
     };

@@ -29,14 +29,14 @@ class ServiceAppointmentHistory extends React.Component {
     async handleSubmit(event) {
         event.preventDefault()
         const data = { ...this.state }
-        console.log(":::data", data)
+        // console.log(":::data", data)
         const vinSearch = data.search;
-        console.log("::::vinSearch::", vinSearch)
+        // console.log("::::vinSearch::", vinSearch)
         // this.setState({ search: vinSearch.toUpperCase() })
         // let filtered = data.appointments.filter(appointment => appointment.vin.indexOf(vinSearch) > -1)
         let filtered = data.appointments.filter(appointment => appointment.vin === vinSearch && appointment.is_finished === true)
-        console.log(":::::filtered", filtered)
-        console.log(":::data reassigned?:::", data)
+        // console.log(":::::filtered", filtered)
+        // console.log(":::data reassigned?:::", data)
         data.filteredAppointments = filtered
         this.setState({ filteredAppointments: data.filteredAppointments })
         // this.setState({ search: vinSearch.toUpperCase(), filteredAppointments: filtered })
@@ -45,7 +45,7 @@ class ServiceAppointmentHistory extends React.Component {
             method: "get",
         }
         const response = await fetch(appointmentsUrl, fetchConfig);
-        console.log("::::response", response)
+        // console.log("::::response", response)
     }
 
     async componentDidMount() {
@@ -55,8 +55,7 @@ class ServiceAppointmentHistory extends React.Component {
         const data = await response.json();
         // console.log(":::mount data:::", data)
         this.setState({ appointments: data.appointments })
-        // if (response.ok) {
-        // }
+
     }
 
     render() {
@@ -64,7 +63,6 @@ class ServiceAppointmentHistory extends React.Component {
         if (this.state.search.length < 1) {
             appointmentList = 'd-none'
         }
-        // onChange={this.handleSearchChange} value={this.state.search}
 
         return (
             <div className="container">

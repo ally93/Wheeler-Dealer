@@ -88,7 +88,7 @@ class ServiceAppointmentForm extends React.Component {
 
         if (response.ok) {
             const data = await response.json();
-            console.log("::::mount data::::", data)
+            // console.log("::::mount data::::", data)
             this.setState({ technicians: data.technicians });
         };
     };

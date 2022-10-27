@@ -5,7 +5,7 @@ class ServiceAppointmentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = { appointments: props.appointments };
-        console.log("::::props:::", props.appointments.filter(appointment => appointment.is_vip === true))
+        // console.log("::::props:::", props.appointments.filter(appointment => appointment.is_vip === true))
         this.handleDelete = this.handleDelete.bind(this)
     }
 
@@ -38,9 +38,6 @@ class ServiceAppointmentList extends React.Component {
     }
 
     render() {
-        // const vip = this.state.appointments.filter(appointment => { return appointment.is_vip })
-        // console.log(":::vip:::", vip)
-
         return (
             <div className="container">
                 <h3 className="display-6 fw-bold">Service Appointments</h3>
@@ -63,7 +60,6 @@ class ServiceAppointmentList extends React.Component {
                             if (appointment.is_finished === true) {
                                 finished = 'd-none'
                             };
-                            // const is_vip = appointment.is_vip
 
                             return (
                                 <tr className={finished} key={appointment.id}>
