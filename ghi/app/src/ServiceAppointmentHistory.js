@@ -29,23 +29,15 @@ class ServiceAppointmentHistory extends React.Component {
     async handleSubmit(event) {
         event.preventDefault()
         const data = { ...this.state }
-        // console.log(":::data", data)
         const vinSearch = data.search;
-        // console.log("::::vinSearch::", vinSearch)
-        // this.setState({ search: vinSearch.toUpperCase() })
-        // let filtered = data.appointments.filter(appointment => appointment.vin.indexOf(vinSearch) > -1)
         let filtered = data.appointments.filter(appointment => appointment.vin === vinSearch && appointment.is_finished === true)
-        // console.log(":::::filtered", filtered)
-        // console.log(":::data reassigned?:::", data)
         data.filteredAppointments = filtered
         this.setState({ filteredAppointments: data.filteredAppointments })
-        // this.setState({ search: vinSearch.toUpperCase(), filteredAppointments: filtered })
         const appointmentsUrl = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
             method: "get",
         }
         const response = await fetch(appointmentsUrl, fetchConfig);
-        // console.log("::::response", response)
     }
 
     async componentDidMount() {
@@ -53,9 +45,7 @@ class ServiceAppointmentHistory extends React.Component {
         const response = await fetch(url);
 
         const data = await response.json();
-        // console.log(":::mount data:::", data)
         this.setState({ appointments: data.appointments })
-
     }
 
     render() {
@@ -66,7 +56,7 @@ class ServiceAppointmentHistory extends React.Component {
 
         return (
             <div className="container">
-                <h3 className="display-9 fw-bold">Completed Appointment History</h3>
+                <h3 className="display-6 fw-bold">Completed Appointment History</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleSearchChange} value={this.state.search} type="text" placeholder="Start Typing Vin" className='form-control' />
                     <button className="btn btn-primary">Search</button>
