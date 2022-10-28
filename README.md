@@ -372,6 +372,22 @@ In the service microservice, you can register a new technician and create a new 
 | GET    | `/appointments` | Get a list of appointments |
 | GET    | `/appointments-history` | Get the service appointment history for a particular VIN|
 
-<p>&nbsp;</p>
 
 
+## Important git commands
+- merging
+
+(my-branch) $ git checkout main    # switch to main branch
+(main) $ git pull                  # get latest from remote
+(main) $ git checkout my-branch    # switch to dev branch
+(my-branch) $ git merge main       # merge latest into dev branch
+... handle any merging here
+... test out your code
+(my-branch) $ git checkout main    # switch to main branch
+(main) $ git pull                  # test for changes on remote
+... if no changes proceed,
+... if changes go back to line 3
+(main) $ git merge my-branch       # merge dev branch into main
+(main) $ git push                  # push changes to the remote
+(main) $ git checkout my-branch    # change back to dev branch
+                                   # now do more work
