@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { unstable_HistoryRouter } from 'react-router-dom';
-import App from './App';
 
-function SalesRecordForm2(props) {
+function SalesRecordForm(props) {
     const [automobiles, setAutomobiles] = useState([]);
     const [salesPersons, setSalesPersons] = useState([]);
     const [customers, setCustomers] = useState([]);
@@ -140,4 +138,4 @@ function SalesRecordForm2(props) {
   );
 }
 
-export default SalesRecordForm2;
+export default SalesRecordForm;

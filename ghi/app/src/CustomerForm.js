@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-function CustomerForm2(props) {
+function CustomerForm() {
     const { register, handleSubmit, reset } = useForm();
     
     const createCustomer = async (data) => {
@@ -47,4 +47,4 @@ function CustomerForm2(props) {
     )
 }
 
-export default CustomerForm2;
+export default CustomerForm;

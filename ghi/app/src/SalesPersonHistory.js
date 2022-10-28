@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function SalesPersonHistory2(props) {
+function SalesPersonHistory(props) {
     const [salesPerson, setSalesPerson] = useState('');
     const [filteredSales, setFilteredSales] = useState([]);
 
@@ -72,4 +72,4 @@ function SalesPersonHistory2(props) {
     );
 } 
 
-export default SalesPersonHistory2;
+export default SalesPersonHistory;

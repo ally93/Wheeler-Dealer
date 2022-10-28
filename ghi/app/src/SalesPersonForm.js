@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 
 
-function SalesPersonForm2() {
+function SalesPersonForm() {
     const { register, handleSubmit, reset } = useForm();
 
     const submitNewSales = async (data) => {
@@ -45,4 +45,4 @@ function SalesPersonForm2() {
     )
 }
 
-export default SalesPersonForm2;
+export default SalesPersonForm;

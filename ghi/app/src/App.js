@@ -11,14 +11,10 @@ import AutoMobileList from './AutomobileList';
 import AutomobileForm from './AutomobileForm';
 
 import SalesList from './SalesList';
-// import SalesRecordForm from './SalesRecordForm';
-import SalesRecordForm2 from './SalesRecordForm';
-// import SalesPersonHistory from './SalesPersonHistory';
-import SalesPersonHistory2 from './SalesPersonHistory';
-// import SalesPersonForm from './SalesPersonForm';
-import SalesPersonForm2 from './SalesPersonForm';
-// import CustomerForm from './CustomerForm';
-import CustomerForm2 from './CustomerForm';
+import SalesRecordForm from './SalesRecordForm';
+import SalesPersonHistory from './SalesPersonHistory';
+import SalesPersonForm from './SalesPersonForm';
+import CustomerForm from './CustomerForm';
 
 import TechnicianForm from './TechnicianForm';
 import ServiceAppointmentForm from './ServiceAppointmentForm';
@@ -63,11 +59,11 @@ function App(props) {
           <Route path="automobiles" element={<AutoMobileList />} />
           <Route path="automobiles-new" element={<AutomobileForm />} />
           <Route path="salesrecords" element={<SalesList sales={salesRecords} />} />
-          <Route path="salesrecords-new" element={<SalesRecordForm2 
+          <Route path="salesrecords-new" element={<SalesRecordForm 
               reloadSalesCounter={reloadSalesCounter} setReloadSalesCounter={setReloadSalesCounter}/>} />
-          <Route path="salesperson-history" element={<SalesPersonHistory2 sales={salesRecords} />} />
-          <Route path="salesperson-new" element={<SalesPersonForm2 />} />
-          <Route path="customers-new" element={<CustomerForm2 />} />
+          <Route path="salesperson-history" element={<SalesPersonHistory sales={salesRecords} />} />
+          <Route path="salesperson-new" element={<SalesPersonForm />} />
+          <Route path="customers-new" element={<CustomerForm />} />
           <Route path="technicians-new" element={<TechnicianForm />} />
           <Route path="appointments" element={<ServiceAppointmentList appointments={props.appointments} />} />
           <Route path="appointments-new" element={<ServiceAppointmentForm />} />
