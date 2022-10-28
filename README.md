@@ -55,6 +55,8 @@ Below are the RESTful APIs that the main project can hit to gather the data for 
 | Update Customer| PUT     | http://localhost:8090/api/customers/:id/ |
 | Delete Customer| DELETE     | http://localhost:8090/api/customers/:id/ |
 
+\* Replace the `:id` in the url with the corresponding integer of the id of that customer.
+
 #### Example of creating a customer using the POST method
 Put this in the body of Insomnia as JSON:
 ```
@@ -114,6 +116,7 @@ Success, __Status 200 OK__:
 | Update sale| PUT    | http://localhost:8090/api/sales/person/:id/ |
 | Delete sale| DELETE | http://localhost:8090/api/sales/person/:id/ |
 
+\* Replace the `:id` in the url with the corresponding integer of the id of that salesperson.
 
 Example of creating a sales person
 ```
@@ -133,6 +136,7 @@ Example of creating a sales person
 | Update sale| PUT     | http://localhost:8090/api/sales/:id/ |
 | Delete sale| DELETE  | http://localhost:8090/api/sales/:id/ |
 
+\* Replace the `:id` in the url with the corresponding integer of the id of that sale.
 
 Creating and updating a sale requires automobile vin, sales_person id, or customer id.
 ```
