@@ -36,7 +36,7 @@ docker volume create beta-data
 docker-compose build
 docker-compose up
 ```
-6. Once you run these commands, you can open the application in VS Code by typing the terminal command `code .` while in the project directory. From there, you can navigate around with the application!
+6. Once you run these commands, you can open the application in VS Code by typing the terminal command `code .`.
 7. Once your docker is running go to http://localhost:3000 to see the website and you can utilize the navigation through the links on top of the page.
 
 <p>&nbsp;</p>
@@ -64,7 +64,7 @@ Put this in the body of Insomnia as JSON:
 	"phone_number" : "900-100-2001"
 }
 ```
-Updating a customer :
+Updating a customer:
 
 #### Expected response data for each route:
 ##### GET List of Customers
@@ -97,7 +97,7 @@ Success, __Status 200 OK__:
 
 ##### DELETE Customer
 Success, __Status 200 OK__:
-```
+
 {
 	"deleted": "true"
 }
@@ -134,7 +134,7 @@ Example of creating a sales person
 | Delete sale| DELETE  | http://localhost:8090/api/sales/:id/ |
 
 
-Creating and updating a sale requires automobile vin, sales_person id and customer id.
+Creating and updating a sale requires automobile vin, sales_person id, or customer id.
 ```
 {
     "price" : 1000,
@@ -147,15 +147,15 @@ Creating and updating a sale requires automobile vin, sales_person id and custom
 
 ### Approach for sales microservice
 
--Django is used to build the backend model, views and urls for sales microservice
--settings- Linked the django app and project and cors
--Models consist of AutomobileVO, SalesPerson, Customer, SalesRecord
--Registered models in the admin.py
--Views , utilized restful api (POST, GET, DELETE, PUT)
--URLS linking paths from both the app and project
--Ensured the correct polling of data 
+- Django is used to build the backend model, views and urls for sales microservice
+- settings - Linked the django app and project and cors
+- Models consist of AutomobileVO, SalesPerson, Customer, SalesRecord
+- Registered models in the admin.py
+- Views utilized restful api (POST, GET, DELETE, PUT)
+- URLS linking paths from both the app and project
+- Ensured the correct polling of data
 
-
+<p>&nbsp;</p>
 
 ## Service microservice
 The service microservice is responsible for handling and keeping track of service appointments. The service allows you to create technicians and service appointments, and view lists of unfinished appointments and the appointment history for specific automobiles via their VIN number.
@@ -332,7 +332,7 @@ Failure (if the id in the url does not exist in the database), __Status 404 Not 
 	"message": "Appointment does not exist"
 }
 ```
-
+<p>&nbsp;</p>
 
 # Application UI
 The following tables show the URL paths for each microservice. Each page can be reached by typing `localhost:3000` followed by the path.
@@ -372,11 +372,12 @@ In the service microservice, you can register a new technician and create a new 
 | GET    | `/appointments` | Get a list of appointments |
 | GET    | `/appointments-history` | Get the service appointment history for a particular VIN|
 
+<p>&nbsp;</p>
 
+# Important git commands
+## Merging Branches to Main
 
-## Important git commands
-- merging
-
+```
 (my-branch) $ git checkout main    # switch to main branch
 (main) $ git pull                  # get latest from remote
 (main) $ git checkout my-branch    # switch to dev branch
@@ -391,3 +392,4 @@ In the service microservice, you can register a new technician and create a new 
 (main) $ git push                  # push changes to the remote
 (main) $ git checkout my-branch    # change back to dev branch
                                    # now do more work
+```
