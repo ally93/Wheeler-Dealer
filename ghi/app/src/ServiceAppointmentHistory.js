@@ -55,6 +55,12 @@ function ServiceAppointmentHistory(props) {
     const [vin, setVin] = useState('');
     const [filteredAppointments, setFilteredAppointments] = useState([]);
 
+    // super(props)
+    // this.state = {
+    //     vin: '',
+    //     filteredAppointments: []
+    // }
+
     // handleSearchChange(event) {
     //     const vinSearch = event.target.value;
     //     this.setState({ search: value })
@@ -64,11 +70,12 @@ function ServiceAppointmentHistory(props) {
         setVin(event.target.value)
     }
 
-    function handleSearchChange() {
+    function handleSubmit(event) {
         // const vinSearch = event.target.value;
+        event.preventDefault()
         let filtered = props.appointments.filter(appointment => appointment.vin === vin && appointment.is_finished)
-        console.log("vin", vin)
-        console.log("filtered", filtered)
+        // console.log("vin", vin)
+        // console.log("filtered", filtered)
         // console.log("data", data)
         // console.log("filtered", filtered)
         // data.filteredAppointments = filtered
@@ -117,10 +124,10 @@ function ServiceAppointmentHistory(props) {
     return (
         <div className="container">
             <h3 className="display-6 fw-bold">Completed Appointment History</h3>
-            {/* <form onSubmit={this.handleSubmit}> */}
-            <input onChange={handleVinChange} type="text" placeholder="Start Typing Vin" className='form-control' />
-            <button onClick={handleSearchChange} className="btn btn-primary">Search</button>
-            {/* </form> */}
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleVinChange} type="text" placeholder="Start Typing Vin" className='form-control' />
+                <button onClick={handleSubmit} className="btn btn-primary">Search</button>
+            </form>
             <table className="table table-striped" >
                 <thead>
                     <tr>

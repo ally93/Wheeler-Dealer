@@ -34,7 +34,7 @@ function App(props) {
       const serviceAppointments = await appointmentsResponse.json();
 
       setAppointments(serviceAppointments.appointments)
-      console.log("serviceAppointments", serviceAppointments.appointments)
+      // console.log("serviceAppointments", serviceAppointments.appointments)
     }
   }
 

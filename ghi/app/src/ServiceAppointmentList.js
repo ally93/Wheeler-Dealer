@@ -51,7 +51,7 @@ import { NavLink } from 'react-router-dom';
 function serviceAppointmentList(props) {
 
     async function handleDelete(appointmentId) {
-        console.log("handleDelete", appointmentId)
+        // console.log("handleDelete", appointmentId)
         const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}`
         const fetchConfig = {
             method: "DELETE",
@@ -59,7 +59,7 @@ function serviceAppointmentList(props) {
         const response = await fetch(appointmentUrl, fetchConfig);
 
         if (response.ok) {
-            console.log("response", response)
+            // console.log("response", response)
             props.setReloadAppointments(props.reloadAppointments + 1)
         }
     }
@@ -80,7 +80,7 @@ function serviceAppointmentList(props) {
             props.setReloadAppointments(props.reloadAppointments + 1)
         }
     }
-    console.log("props.appointments", props.appointments)
+    // console.log("props.appointments", props.appointments)
 
     return (
         <div className="container">
