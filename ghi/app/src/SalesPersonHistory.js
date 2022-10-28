@@ -1,78 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class SalesPersonHistory extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            salesPerson: '',
-            salesPersons: [],
-            sales: props.sales,
-            filteredSales: []
-        };
-        this.handleSalesPersonChange = this.handleSalesPersonChange.bind(this);
+function SalesPersonHistory(props) {
+    const [salesPerson, setSalesPerson] = useState('');
+    const [filteredSales, setFilteredSales] = useState([]);
+
+    function handleSalesPersonChange(event) {
+        const newSalesPerson = event.target.value;
+        let filtered = props.sales.filter(sale => sale.sales_person.id == newSalesPerson);
+        setSalesPerson(newSalesPerson);
+        setFilteredSales(filtered);
     }
 
-    async componentDidMount() {
-        const salesPerson_url = 'http://localhost:8090/api/sales/person/';
+    const [salesPersons, setSalesPersons] = useState([]);
 
-        const response = await fetch(salesPerson_url);
+    useEffect(() => {
+        async function fetchSalesPersons() {
+            const url = 'http://localhost:8090/api/sales/person/';
 
-        if (response.ok) {
-            const data = await response.json();
-            this.setState({ salesPersons: data.sales_person });
+            const response = await fetch(url);
 
+            if (response.ok) {
+                const data = await response.json();
+                setSalesPersons(data.sales_person);
+            }
         }
-    }
 
-    handleSalesPersonChange(event) {
-        let salesPersonId = event.target.value
-        let filtered = this.state.sales.filter(sale => sale.sales_person.id == salesPersonId);
-        this.setState({ salesPerson: event.target.value, filteredSales: filtered })
-    }
+        fetchSalesPersons();
+    }, []);
 
-    render() {
-        return (
-            <div className="container">
-                <h3 className="display-6 fw-bold">Sales History</h3>
-                <div className="mb-3">
-                    <select onChange={this.handleSalesPersonChange} value={this.state.salesPerson} required name="salesPerson" id="salesPerson" className="form-select">
-                        <option value="">Choose a Sales Person</option>
-                        {this.state.salesPersons.map(salesPerson => {
-                            return (
-                                <option key={salesPerson.id} value={salesPerson.id}>
-                                    {salesPerson.name}
-                                </option>
-                            );
-                        })}
-                    </select>
-                </div>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Sales Person</th>
-                            <th>Purchaser Name</th>
-                            <th>Automobile VIN</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.filteredSales.map(sale => {
-                            return (
-                                <tr key={sale.id}>
-                                    <td>{sale.sales_person.name}</td>
-                                    <td>{sale.customer.name}</td>
-                                    <td>{sale.automobile.vin}</td>
-                                    <td>${sale.price.toLocaleString()}</td>
-                                </tr>
-                            );
-                        })}
 
-                    </tbody>
-                </table>
+    return (
+        <div className="container">
+            <h3 className="display-6 fw-bold">Sales History</h3>
+            <div className="mb-3">
+                <select value={salesPerson} onChange={handleSalesPersonChange} required name="salesPerson" id="salesPerson" className="form-select">
+                    <option value="">Choose a Sales Person</option>
+                    {salesPersons.map(salesPerson => {
+                        return (
+                            <option key={salesPerson.id} value={salesPerson.id}>
+                                {salesPerson.name}
+                            </option>
+                        );
+                    })}
+                </select>
             </div>
-        );
-    }
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sales Person</th>
+                        <th>Purchaser Name</th>
+                        <th>Automobile VIN</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredSales.map(sale => {
+                        return (
+                            <tr key={sale.id}>
+                                <td>{sale.sales_person.name}</td>
+                                <td>{sale.customer.name}</td>
+                                <td>{sale.automobile.vin}</td>
+                                <td>${sale.price.toLocaleString()}</td>
+                            </tr>
+                        );
+                    })}
 
+                </tbody>
+            </table>
+        </div>
+    );
+} 
 
-}
 export default SalesPersonHistory;

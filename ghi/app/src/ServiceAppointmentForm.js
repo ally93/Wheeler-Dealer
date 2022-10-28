@@ -2,102 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react';
 
-
-// class ServiceAppointmentForm extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             vin: '',
-//             owner: '',
-//             date: '',
-//             time: '',
-//             technicians: [],
-//             reason: '',
-//         };
-//         this.handleVinChange = this.handleVinChange.bind(this);
-//         this.handleOwnerChange = this.handleOwnerChange.bind(this);
-//         this.handleDateChange = this.handleDateChange.bind(this);
-//         this.handleTimeChange = this.handleTimeChange.bind(this);
-//         this.handleTechnicianChange = this.handleTechnicianChange.bind(this);
-//         this.handleReasonChange = this.handleReasonChange.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-
-//     handleVinChange(event) {
-//         const value = event.target.value;
-//         this.setState({ vin: value });
-//     };
-
-//     handleOwnerChange(event) {
-//         const value = event.target.value;
-//         this.setState({ owner: value })
-//     }
-
-//     handleDateChange(event) {
-//         const value = event.target.value;
-//         this.setState({ date: value })
-//     }
-
-//     handleTimeChange(event) {
-//         const value = event.target.value;
-//         this.setState({ time: value })
-//     }
-
-//     handleTechnicianChange(event) {
-//         const value = event.target.value;
-//         this.setState({ technician: value })
-//     }
-
-//     handleReasonChange(event) {
-//         const value = event.target.value;
-//         this.setState({ reason: value })
-//     }
-
-// async handleSubmit(event) {
-//     event.preventDefault();
-//     const data = { ...this.state };
-//     delete data.technicians
-//     // console.log(":::data::::", data)
-
-//     const serviceAppointmentUrl = 'http://localhost:8080/api/appointments/';
-//     const fetchConfig = {
-//         method: "post",
-//         body: JSON.stringify(data),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     };
-//     const response = await fetch(serviceAppointmentUrl, fetchConfig);
-//     if (response.ok) {
-//         const newServiceAppointment = await response.json();
-
-//         const cleared = {
-//             vin: '',
-//             owner: '',
-//             date: '',
-//             time: '',
-//             technician: '',
-//             reason: '',
-//         };
-//         this.setState(cleared)
-//         this.props.getAppointments()
-//     }
-// }
-
-//     async componentDidMount() {
-//     const techniciansUrl = 'http://localhost:8080/api/technicians/';
-
-//     const response = await fetch(techniciansUrl);
-
-//     if (response.ok) {
-//         const data = await response.json();
-//         // console.log("::::mount data::::", data)
-//         this.setState({ technicians: data.technicians });
-//     };
-// };
-
-//     render() {
-
 function ServiceAppointmentForm(props) {
     const { register, handleSubmit, reset } = useForm();
 
@@ -127,7 +31,6 @@ function ServiceAppointmentForm(props) {
 
         if (response.ok) {
             const data = await response.json();
-            // console.log("::::mount data::::", data)
             setTechnicians(data.technicians)
         };
     };

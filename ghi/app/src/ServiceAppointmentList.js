@@ -27,7 +27,6 @@ function serviceAppointmentList(props) {
         const response = await fetch(appointmentUrl, fetchConfig);
 
         if (response.ok) {
-            console.log("response", response)
             props.setReloadAppointments(props.reloadAppointments + 1)
         }
     }

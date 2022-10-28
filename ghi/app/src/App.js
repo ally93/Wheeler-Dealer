@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import MainPage from './MainPage';
 import Nav from './Nav';
 
@@ -19,13 +20,11 @@ import TechnicianForm from './TechnicianForm';
 import ServiceAppointmentForm from './ServiceAppointmentForm';
 import ServiceAppointmentList from './ServiceAppointmentList';
 import ServiceAppointmentHistory from './ServiceAppointmentHistory';
-import { useEffect, useState } from 'react';
 
 
 function App(props) {
 
   const [appointments, setAppointments] = useState([])
-
   const [reloadAppointments, setReloadAppointments] = useState(0)
 
   async function getAppointments() {
@@ -36,13 +35,23 @@ function App(props) {
     }
   }
 
-  useEffect(() => {
-    getAppointments()
-  }, [reloadAppointments])
+  const [salesRecords, setSalesRecords] = useState([]);
+  const [reloadSalesCounter, setReloadSalesCounter] = useState(0);
 
-  if (props.sales === undefined) {
-    return null;
+  async function loadSalesRecords() {
+    const salesResponse = await fetch('http://localhost:8090/api/sales');
+
+    if (salesResponse.ok) {
+      // code gets the data from the responses json method
+      const salesData = await salesResponse.json();
+      setSalesRecords(salesData.sales_record);
+    }
   }
+
+  useEffect(() => {
+    getAppointments();
+    loadSalesRecords();
+  }, [reloadAppointments, reloadSalesCounter])
 
   return (
     <BrowserRouter>
@@ -56,9 +65,10 @@ function App(props) {
           <Route path="vehicles-new" element={<VehicleModelForm />} />
           <Route path="automobiles" element={<AutoMobileList />} />
           <Route path="automobiles-new" element={<AutomobileForm />} />
-          <Route path="salesrecords" element={<SalesList sales={props.sales} />} />
-          <Route path="salesrecords-new" element={<SalesRecordForm />} />
-          <Route path="salesperson-history" element={<SalesPersonHistory sales={props.sales} />} />
+          <Route path="salesrecords" element={<SalesList sales={salesRecords} />} />
+          <Route path="salesrecords-new" element={<SalesRecordForm
+            reloadSalesCounter={reloadSalesCounter} setReloadSalesCounter={setReloadSalesCounter} />} />
+          <Route path="salesperson-history" element={<SalesPersonHistory sales={salesRecords} />} />
           <Route path="salesperson-new" element={<SalesPersonForm />} />
           <Route path="customers-new" element={<CustomerForm />} />
           <Route path="technicians-new" element={<TechnicianForm />} />
