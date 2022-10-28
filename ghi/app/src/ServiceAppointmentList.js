@@ -5,7 +5,6 @@ class ServiceAppointmentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = { appointments: props.appointments };
-        // console.log("::::props:::", props.appointments.filter(appointment => appointment.is_vip === true))
         this.handleDelete = this.handleDelete.bind(this)
     }
 

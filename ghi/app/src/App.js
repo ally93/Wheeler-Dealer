@@ -34,7 +34,6 @@ function App(props) {
       // code gets the data from the responses json method
       const salesData = await salesResponse.json();
       setSalesRecords(salesData.sales_record);
-      console.log('sales', salesData.sales_record)
     }
   }
 

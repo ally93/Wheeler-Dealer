@@ -28,7 +28,6 @@ function SalesPersonHistory(props) {
         fetchSalesPersons();
     }, []);
 
-    // console.log('Sales Persons', salesPersons, ' filtered sales ', filteredSales);
 
     return (
         <div className="container">

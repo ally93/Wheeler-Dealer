@@ -6,7 +6,6 @@ function SalesPersonForm() {
     const { register, handleSubmit, reset } = useForm();
 
     const submitNewSales = async (data) => {
-        console.log("data: ", data);
         const salesPersonUrl = 'http://localhost:8090/api/sales/person/';
         const fetchConfig = {
         method: "post",
@@ -18,7 +17,6 @@ function SalesPersonForm() {
         const response = await fetch(salesPersonUrl, fetchConfig);
         if (response.ok) {
             const newSalesPerson = await response.json();
-            console.log("new person: ", newSalesPerson);
         }
         reset();
     }

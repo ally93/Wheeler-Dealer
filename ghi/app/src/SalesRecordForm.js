@@ -47,11 +47,7 @@ function SalesRecordForm(props) {
           }
         }
   
-        const response = await fetch(url, fetchConfig);
-  
-        if (response.ok) {
-            console.log('mark car as sold', response);
-        }
+        await fetch(url, fetchConfig);
     }
 
     const { register, handleSubmit, reset } = useForm();
@@ -59,7 +55,6 @@ function SalesRecordForm(props) {
     const createNewSale = async (data) => {
         data.sales_person = data.salesPerson;
         delete data.salesPerson;
-        console.log(data);
 
         const salesUrl = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
@@ -77,7 +72,6 @@ function SalesRecordForm(props) {
         fetchInformation();
 
         // reload sales from App.js
-        console.log("reset sales");
         props.setReloadSalesCounter(props.reloadSalesCounter + 1);
 
         reset();

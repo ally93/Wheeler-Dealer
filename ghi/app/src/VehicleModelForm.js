@@ -13,7 +13,6 @@ function VehicleModelForm() {
                 'Content-Type': 'application/json',
             },
         };
-        console.log(data);
         const response = await fetch(url, fetchConfig);
 
         if (response.ok) {
