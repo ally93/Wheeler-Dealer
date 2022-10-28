@@ -10,6 +10,35 @@ This project consists of 3 microservices (Inventory, Sales, Service) operating w
 
 <img src="./documents/Project-beta-diagram.png" width="1100"/>
 
+# How to run the app
+1. Fork this repository from git lab https://gitlab.com/drrckwan/project-beta
+2. Change the project name and the project slug, if desired. For the project URL, choose the correct namespace. Include a project description if you want, and choose the desired visibility level.
+
+<img src="./documents/readme-gitlab-fork.png" width="650"/>
+
+<p>&nbsp;</p>
+
+3. Next, clone the repo. To do this, click the __clone__ button and copy the HTTPS link to your clipboard.
+
+<img src="./documents/readme-gitlab-clone.png" width="650"/>
+
+<p>&nbsp;</p>
+
+4. In your terminal, `cd` into the directory that you wish to store the project. Clone the repository by typing `git clone` followed by the copied gitlab link.
+
+<img src="./documents/readme-gitlab-clone-terminal.png" width="650"/>
+
+<p>&nbsp;</p>
+
+5. After cloning the repo, `cd` into the project folder. Make sure the docker dashboard is running. Run the following commands one by one in your terminal to build and run the application.
+```
+docker volume create beta-data
+docker-compose build
+docker-compose up
+```
+6. Once you run these commands, you can open the application in VS Code by typing the terminal command `code .` while in the project directory. From there, you can navigate around with the application!
+7. Once your docker is running go to http://localhost:3000 to see the website and you can utilize the navigation through the links on top of the page.
+
 <p>&nbsp;</p>
 
 ## Sales microservice
@@ -30,11 +59,12 @@ Below are the RESTful APIs that the main project can hit to gather the data for 
 Put this in the body of Insomnia as JSON:
 ```
 {
-	"name": "Avery Wright",
-	"employee_number": 7140
+	"name" : "Bob234",
+	"address" : "12 uphill ave, why, ca",
+	"phone_number" : "900-100-2001"
 }
 ```
-Updating a customer can take the .
+Updating a customer :
 
 #### Expected response data for each route:
 ##### GET List of Customers
@@ -42,14 +72,16 @@ Updating a customer can take the .
 {
 	"customers": [
 		{
-			"name": "Arthur Barnes",
-			"employee_number": 6028,
+			"name": "Yomama",
+			"address": "12 uphill ave, why, ca",
+			"phone_number": "900-100-2001",
 			"id": 1
 		},
 		{
-			"name": "Avery Wright",
-			"employee_number": 7140,
-			"id": 2
+			"name": "Senorita",
+			"address": "123 Wonder st, Sf, Ca",
+			"phone_number": "12345678910",
+			"id": 3
 		}
 	]
 }
@@ -58,48 +90,29 @@ Updating a customer can take the .
 Success, __Status 200 OK__:
 ```
 {
-	"name": "Avery Wright",
-	"employee_number": 7140,
-	"id": 2
-}
-```
-Failure (if the id in the url does not exist in the database), __Status 404 Not Found__:
-```
-{
-	"message": "Technician does not exist"
-}
-```
-##### DELETE Technician
-Success, __Status 200 OK__:
-```
-{
-	"message": "Technician has been deleted"
-}
-```
-Failure (if the id in the url does not exist in the database), __Status 404 Not Found__:
-```
-{
-	"message": "Technician does not exist"
-}
-```
-<!-- Example of creating a customer using post method.
-```
-{
-    "name" : "Bob234",
+	"name" : "Bob234",
 	"address" : "12 uphill ave, why, ca",
 	"phone_number" : "900-100-2001"
 }
-``` -->
+
+##### DELETE Customer
+Success, __Status 200 OK__:
+```
+{
+	"deleted": "true"
+}
+```
+
 
 ### Salesperson API
 
-| Action    | Method  | URL                             |
-|-----------|---------|---------------------------------|
-| List Sales| GET     | http://localhost:8090/api/sales/person |
-| Create Sale| POST     | http://localhost:8090/api/sales/person |
-| Sale detail| GET     | http://localhost:8090/api/sales/person/:id/ |
-| Update sale| PUT     | http://localhost:8090/api/sales/person/:id/ |
-| Delete sale| DELETE     | http://localhost:8090/api/sales/person/:id/ |
+| Action     | Method | URL                                         |
+|------------|--------|---------------------------------------------|
+| List Sales | GET    | http://localhost:8090/api/sales/person      |
+| Create Sale| POST   | http://localhost:8090/api/sales/person      |
+| Sale detail| GET    | http://localhost:8090/api/sales/person/:id/ |
+| Update sale| PUT    | http://localhost:8090/api/sales/person/:id/ |
+| Delete sale| DELETE | http://localhost:8090/api/sales/person/:id/ |
 
 
 Example of creating a sales person
@@ -112,13 +125,13 @@ Example of creating a sales person
 
 ### Sales API
 
-| Action    | Method  | URL                             |
-|-----------|---------|---------------------------------|
-| List Sales| GET     | http://localhost:8090/api/sales |
-| Create Sale| POST     | http://localhost:8090/api/sales |
+| Action     | Method  | URL                                  |
+|------------|---------|--------------------------------------|
+| List Sales | GET     | http://localhost:8090/api/sales      |
+| Create Sale| POST    | http://localhost:8090/api/sales      |
 | Sale detail| GET     | http://localhost:8090/api/sales/:id/ |
 | Update sale| PUT     | http://localhost:8090/api/sales/:id/ |
-| Delete sale| DELETE     | http://localhost:8090/api/sales/:id/ |
+| Delete sale| DELETE  | http://localhost:8090/api/sales/:id/ |
 
 
 Creating and updating a sale requires automobile vin, sales_person id and customer id.
@@ -133,6 +146,7 @@ Creating and updating a sale requires automobile vin, sales_person id and custom
 
 
 ### Approach for sales microservice
+
 -Django is used to build the backend model, views and urls for sales microservice
 -settings- Linked the django app and project and cors
 -Models consist of AutomobileVO, SalesPerson, Customer, SalesRecord
@@ -141,7 +155,7 @@ Creating and updating a sale requires automobile vin, sales_person id and custom
 -URLS linking paths from both the app and project
 -Ensured the correct polling of data 
 
-<p>&nbsp;</p>
+
 
 ## Service microservice
 The service microservice is responsible for handling and keeping track of service appointments. The service allows you to create technicians and service appointments, and view lists of unfinished appointments and the appointment history for specific automobiles via their VIN number.
@@ -318,7 +332,7 @@ Failure (if the id in the url does not exist in the database), __Status 404 Not 
 	"message": "Appointment does not exist"
 }
 ```
-<p>&nbsp;</p>
+
 
 # Application UI
 The following tables show the URL paths for each microservice. Each page can be reached by typing `localhost:3000` followed by the path.
@@ -360,32 +374,4 @@ In the service microservice, you can register a new technician and create a new 
 
 <p>&nbsp;</p>
 
-# How to run the app
-Go to the Gitlab link and fork the repo. Change the project name and the project slug, if desired. For the project URL, choose the correct namespace. Include a project description if you want, and choose the desired visibility level.
 
-https://gitlab.com/drrckwan/project-beta
-
-
-<img src="./documents/readme-gitlab-fork.png" width="650"/>
-
-<p>&nbsp;</p>
-
-Next, clone the repo. To do this, click the __clone__ button and copy the HTTPS link to your clipboard.
-
-<img src="./documents/readme-gitlab-clone.png" width="650"/>
-
-<p>&nbsp;</p>
-
-In your terminal, `cd` into the directory that you wish to store the project. Clone the repository by typing `git clone` followed by the copied gitlab link.
-
-<img src="./documents/readme-gitlab-clone-terminal.png" width="650"/>
-
-<p>&nbsp;</p>
-
-After cloning the repo, `cd` into the project folder. Make sure the docker dashboard is running. Run the following commands one by one in your terminal to build and run the application.
-```
-docker volume create beta-data
-docker-compose build
-docker-compose up
-```
-Once you run these commands, you can open the application in VS Code by typing the terminal command `code .` while in the project directory. From there, you can play around with the application!
