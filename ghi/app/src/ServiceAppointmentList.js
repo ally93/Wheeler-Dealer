@@ -1,57 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-
-// class ServiceAppointmentList extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { appointments: props.appointments };
-//         // console.log("::::props:::", props.appointments.filter(appointment => appointment.is_vip === true))
-//         this.handleDelete = this.handleDelete.bind(this);
-//         this.handleCompletion = this.handleCompletion.bind(this);
-//     }
-
-// async handleDelete(appointmentId) {
-//     const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}`
-//     const fetchConfig = {
-//         method: "DELETE",
-//     }
-//     const response = await fetch(appointmentUrl, fetchConfig);
-
-//     if (response.ok) {
-//         window.location.reload(true)
-//     }
-// }
-
-// async handleCompletion(appointmentId) {
-//     const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}/`
-//     const fetchConfig = {
-//         method: "PUT",
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ is_finished: true }),
-//     }
-//     const response = await fetch(appointmentUrl, fetchConfig);
-
-//     if (response.ok) {
-//         // this.componentDidMount();
-//         this.window.reload(true)
-//     }
-// }
-
-//     async componentDidMount() {
-//         const appointmentsUrl = "http://localhost:8080/api/appointments/"
-
-//         const response = await fetch(appointmentsUrl);
-//         if (response.ok) {
-//             this.props.getAppointments()
-//         }
-//     }
 function serviceAppointmentList(props) {
 
     async function handleDelete(appointmentId) {
-        // console.log("handleDelete", appointmentId)
         const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}`
         const fetchConfig = {
             method: "DELETE",
@@ -59,7 +11,6 @@ function serviceAppointmentList(props) {
         const response = await fetch(appointmentUrl, fetchConfig);
 
         if (response.ok) {
-            // console.log("response", response)
             props.setReloadAppointments(props.reloadAppointments + 1)
         }
     }
@@ -80,7 +31,6 @@ function serviceAppointmentList(props) {
             props.setReloadAppointments(props.reloadAppointments + 1)
         }
     }
-    // console.log("props.appointments", props.appointments)
 
     return (
         <div className="container">

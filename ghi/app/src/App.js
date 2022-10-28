@@ -32,9 +32,7 @@ function App(props) {
     const appointmentsResponse = await fetch('http://localhost:8080/api/appointments/');
     if (appointmentsResponse.ok) {
       const serviceAppointments = await appointmentsResponse.json();
-
       setAppointments(serviceAppointments.appointments)
-      // console.log("serviceAppointments", serviceAppointments.appointments)
     }
   }
 
