@@ -19,10 +19,30 @@ import TechnicianForm from './TechnicianForm';
 import ServiceAppointmentForm from './ServiceAppointmentForm';
 import ServiceAppointmentList from './ServiceAppointmentList';
 import ServiceAppointmentHistory from './ServiceAppointmentHistory';
+import { useEffect, useState } from 'react';
 
 
 function App(props) {
-  if (props.sales === undefined || props.appointments === undefined) {
+
+  const [appointments, setAppointments] = useState([])
+
+  const [reloadAppointments, setReloadAppointments] = useState(0)
+
+  async function getAppointments() {
+    const appointmentsResponse = await fetch('http://localhost:8080/api/appointments/');
+    if (appointmentsResponse.ok) {
+      const serviceAppointments = await appointmentsResponse.json();
+
+      setAppointments(serviceAppointments.appointments)
+      console.log("serviceAppointments", serviceAppointments.appointments)
+    }
+  }
+
+  useEffect(() => {
+    getAppointments()
+  }, [reloadAppointments])
+
+  if (props.sales === undefined) {
     return null;
   }
 
@@ -44,9 +64,9 @@ function App(props) {
           <Route path="salesperson-new" element={<SalesPersonForm />} />
           <Route path="customers-new" element={<CustomerForm />} />
           <Route path="technicians-new" element={<TechnicianForm />} />
-          <Route path="appointments" element={<ServiceAppointmentList appointments={props.appointments} />} />
-          <Route path="appointments-new" element={<ServiceAppointmentForm />} />
-          <Route path="appointments-history" element={<ServiceAppointmentHistory appointments={props.appointments} />} />
+          <Route path="appointments" element={<ServiceAppointmentList appointments={appointments} reloadAppointments={reloadAppointments} setReloadAppointments={setReloadAppointments} />} />
+          <Route path="appointments-new" element={<ServiceAppointmentForm reloadAppointments={reloadAppointments} setReloadAppointments={setReloadAppointments} />} />
+          <Route path="appointments-history" element={<ServiceAppointmentHistory appointments={appointments} />} />
         </Routes>
       </div>
     </BrowserRouter>
